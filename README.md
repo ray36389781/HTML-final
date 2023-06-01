@@ -6,3 +6,5 @@ I build 3 models:
 
 time I devoted into:1>2>3
 performance:2>1>3
+
+One way to run codes are entering "python3 [file_name]" in ubuntu.
