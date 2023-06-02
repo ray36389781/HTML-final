@@ -8,3 +8,5 @@ time I devoted into:1>2>3
 performance:2>1>3
 
 One way to run codes are entering "python3 [file_name]" in ubuntu.
+
+Folders with value as name are code and its prediction, the value is score on kaggle, realpred.csv is raw prediction, pred.csv is changed to closest valid integer.
