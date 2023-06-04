@@ -3,6 +3,8 @@ from sklearn.linear_model import LinearRegression
 import pandas as pd
 from sklearn.experimental import enable_iterative_imputer
 from sklearn.impute import IterativeImputer
+from sklearn.metrics import mean_squared_error
+
 
 # preprocess data
 #read in data
@@ -68,3 +70,18 @@ with open("lgrpred.csv", "a") as f:
     for each_id, row in zip(ids,pred):
         line = "%d" %each_id + ","+"%f" %row + "\n"
         f.write(line)
+
+# Evaluate the performance on the training dataset using mean squared error (MSE)
+y_pred = []
+for instance in trainX:
+    predicted_probabilities = []
+    for model in models:
+        probability = model.predict([instance])
+        predicted_probabilities.append(probability)
+    
+    probabilities = np.exp(predicted_probabilities) / np.sum(np.exp(predicted_probabilities))
+    predicted_class = np.argmax(probabilities)
+    y_pred.append(predicted_class)
+
+mse = mean_squared_error(trainy, y_pred)
+print(f"Mean Squared Error (MSE) on training dataset: {mse}")
